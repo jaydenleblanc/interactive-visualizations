@@ -27,11 +27,10 @@ d3.json("samples.json").then(function (data) {
   // Set dropdown on document to a variable
   var dropdown = d3.select("#selDataset");
 
-  var inputValue = dropdown;
-
   // Create function for when an ID is selected
   function handleDrop() {
     console.log("You're in the function!");
+    var inputValue = dropdown.property("value");
     console.log(inputValue);
   }
   // Create event handler for dropdown selection
