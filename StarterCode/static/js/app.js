@@ -9,9 +9,15 @@ d3.json("samples.json").then(function (data) {
 
   // Array to hold sample ID's
   var dropdownId = [];
+  var select = document.getElementById("selDataset");
 
   for (var i = 0; i < samples.length; i++) {
     dropdownId.push(samples[i].id);
   }
-  console.log(dropdownId);
+
+  for (id in dropdownId) {
+    select.add(new Option(dropdownId[id]));
+  }
+
+  // console.log(dropdownId);
 });
