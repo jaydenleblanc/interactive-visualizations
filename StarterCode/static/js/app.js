@@ -33,10 +33,23 @@ d3.json("samples.json").then(function (data) {
   function handleDrop() {
     var inputValue = dropdown.property("value");
     console.log(inputValue);
+
+    // Condition statment to find the index of the value that was selected. Samples and dropdownId arrays index match
     if (dropdownId.indexOf(inputValue) !== -1) {
       var idIndex = dropdownId.indexOf(inputValue);
       console.log("Value located!");
       console.log(idIndex);
+
+      // The Indexof method returns the index of the value in the array. Use that value to find the OTUs for the selected value
+      var labels = samples[idIndex].otu_ids;
+      var values = samples[idIndex].sample_values;
+      var hovertext = samples[idIndex].otu_labels;
+
+      // Print OTU_ids array to the console
+      // console.log(labels);
+      // console.log(values);
+      // console.log(hovertext);
+
       //console.log(samples[inputValue].id);
     } else {
       console.log("Value not found!");
