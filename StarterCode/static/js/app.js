@@ -16,7 +16,7 @@ d3.json("samples.json").then(function (data) {
     dropdownId.push(samples[i].id);
   }
 
-  console.log(dropdownId);
+  //console.log(dropdownId);
 
   // loop the array and then add the array values to the html file element
   for (id in dropdownId) {
@@ -45,10 +45,13 @@ d3.json("samples.json").then(function (data) {
       var values = samples[idIndex].sample_values;
       var hovertext = samples[idIndex].otu_labels;
 
-      // Print OTU_ids array to the console
-      // console.log(labels);
-      // console.log(values);
-      // console.log(hovertext);
+      // Top 10 values (sample_values)
+      var topValues = values.sort((a, b) => b - a).slice(0, 10);
+      console.log(topValues);
+
+      // Create x and y arrays for bar graph
+      var x = [];
+      var y = [];
 
       //console.log(samples[inputValue].id);
     } else {
