@@ -16,6 +16,8 @@ d3.json("samples.json").then(function (data) {
     dropdownId.push(samples[i].id);
   }
 
+  console.log(dropdownId);
+
   // loop the array and then add the array values to the html file element
   for (id in dropdownId) {
     select.add(new Option(dropdownId[id]));
@@ -29,15 +31,19 @@ d3.json("samples.json").then(function (data) {
 
   // Create function for when an ID is selected
   function handleDrop() {
-    console.log("You're in the function!");
     var inputValue = dropdown.property("value");
     console.log(inputValue);
+    if (dropdownId.indexOf(inputValue) !== -1) {
+      var idIndex = dropdownId.indexOf(inputValue);
+      console.log("Value located!");
+      console.log(idIndex);
+      //console.log(samples[inputValue].id);
+    } else {
+      console.log("Value not found!");
+    }
   }
   // Create event handler for dropdown selection
   dropdown.on("change", handleDrop);
-  //var stock = d3.select("#stockInput").node().value;
-  //console.log(stock)
-  //   console.log("You're in the function!");
-  // }
+
   // //console.log(samples[0].otu_ids
 });
