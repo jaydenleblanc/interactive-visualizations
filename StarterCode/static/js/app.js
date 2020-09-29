@@ -47,11 +47,21 @@ d3.json("samples.json").then(function (data) {
 
       // Top 10 values (sample_values)
       var topValues = values.sort((a, b) => b - a).slice(0, 10);
-      console.log(topValues);
 
-      // Create x and y arrays for bar graph
-      var x = [];
-      var y = [];
+      // Create trace to set up bar graph
+      var trace1 = {
+        x: labels,
+        y: topValues,
+        type: "bar",
+      };
+
+      var data = [trace1];
+
+      var layout = {
+        title: "'Test Chart",
+      };
+
+      Plotly.newPlot("graph", data, layout);
 
       //console.log(samples[inputValue].id);
     } else {
