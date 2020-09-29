@@ -44,21 +44,30 @@ d3.json("samples.json").then(function (data) {
       var labels = samples[idIndex].otu_ids;
       var values = samples[idIndex].sample_values;
       var hovertext = samples[idIndex].otu_labels;
+      console.log();
+      console.log(values);
 
       // Top 10 values (sample_values)
       var topValues = values.sort((a, b) => b - a).slice(0, 10);
+      var idLabels = [];
+
+      // for (label in labels) {
+      //   idLabels.push("OTU ID: ${labels}");
+      //   console.log(idLabels);
+      // }
 
       // Create trace to set up bar graph
       var trace1 = {
-        x: labels,
-        y: topValues,
+        x: topValues,
+        y: labels,
         type: "bar",
+        orientation: "h",
       };
 
       var data = [trace1];
 
       var layout = {
-        title: "'Test Chart",
+        title: "Top 10 OTUs",
       };
 
       Plotly.newPlot("graph", data, layout);
