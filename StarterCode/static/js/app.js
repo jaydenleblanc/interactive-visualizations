@@ -49,17 +49,16 @@ d3.json("samples.json").then(function (data) {
 
       // Top 10 values (sample_values)
       var topValues = values.sort((a, b) => b - a).slice(0, 10);
-      var idLabels = [];
+      console.log(topValues);
 
-      // for (label in labels) {
-      //   idLabels.push("OTU ID: ${labels}");
-      //   console.log(idLabels);
-      // }
+      // Get "OTU ID" in front of each label
+      var mappedLabels = labels.map((x) => "OTU ID" + " " + x);
+      //console.log(mappedLabels);
 
       // Create trace to set up bar graph
       var trace1 = {
         x: topValues,
-        y: labels,
+        y: mappedLabels,
         type: "bar",
         orientation: "h",
       };
