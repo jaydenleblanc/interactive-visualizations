@@ -55,12 +55,13 @@ d3.json("samples.json").then(function (data) {
       var mappedLabels = labels.map((x) => "OTU ID" + " " + x);
       //console.log(mappedLabels);
 
-      // Create trace to set up bar graph
+      // *********** Create trace to set up bar graph ********** //
       var trace1 = {
         x: topValues,
         y: mappedLabels,
         type: "bar",
         orientation: "h",
+        text: hovertext,
       };
 
       var data = [trace1];
@@ -69,9 +70,42 @@ d3.json("samples.json").then(function (data) {
         title: "Top 10 OTUs",
       };
 
-      Plotly.newPlot("graph", data, layout);
+      Plotly.newPlot("bargraph", data, layout);
 
-      //console.log(samples[inputValue].id);
+      // ************* Create trace to set up bubble graph *************//
+      var trace2 = {
+        x: labels,
+        y: values,
+        mode: "markers",
+        marker: {
+          color: [
+            "rgb(93, 164, 214)",
+            "rgb(255, 144, 14)",
+            "rgb(44, 160, 101)",
+            "rgb(255, 65, 54)",
+            "rgb(93, 164, 214)",
+            "rgb(255, 144, 14)",
+            "rgb(44, 160, 101)",
+            "rgb(255, 65, 54)",
+            "rgb(44, 160, 101)",
+            "rgb(255, 65, 54)",
+          ],
+
+          opacity: [2, 1.8, 1.6, 1.4, 1.2, 1, 0.8, 0.6, 0.4, 0.2],
+          size: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+        },
+      };
+
+      var data2 = [trace2];
+
+      var layout2 = {
+        title: "Top 10 OTUs Bubble Chart",
+        showlegend: false,
+        height: 600,
+        width: 600,
+      };
+
+      Plotly.newPlot("bubblegraph", data2, layout2);
     } else {
       console.log("Value not found!");
     }
